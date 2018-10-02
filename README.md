@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Trello Clone was built as a take-home exercise for a job application.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To install:
+* gem install foreman
+* bundle install
+* rake db:create db:migrate
+* foreman start -f Procfile.dev
+* Go to http://localhost:3000
