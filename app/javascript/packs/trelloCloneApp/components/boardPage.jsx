@@ -47,6 +47,12 @@ class BoardPage extends React.Component {
     });
   }
 
+  onChangePositionColumn = (columnId, position) => {
+    axios.patch(`/columns/${columnId}.json`, { column: { position } }).then((response) => {
+      this.fetchBoard();
+    });
+  }
+
   renderBody() {
     if (this.state.loading) {
       return (
@@ -63,6 +69,7 @@ class BoardPage extends React.Component {
           <Columns
             columns={this.state.board.columns}
             onDelete={this.onDeleteColumn}
+            onChangePosition={this.onChangePositionColumn}
           />
         </div>
       )

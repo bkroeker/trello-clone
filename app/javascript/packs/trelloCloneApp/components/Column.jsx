@@ -8,14 +8,16 @@ export default class Column extends React.Component {
 
   render() {
     return (
-      <div className='card w-25 float-left'>
-        <div className='card-body'>
-          <h5 className='card-title'>
-            {this.props.column.name}
-            <a onClick={this.onDelete} href='#' className='float-right btn btn-danger' data-confirm='Are you sure?'>X</a>
-          </h5>
+      <li data-column-id={this.props.column.id}>
+        <div className='card'>
+          <div className='card-body'>
+            <h5 className='card-title'>
+              {this.props.column.position}. {this.props.column.name}
+              <a onClick={this.onDelete} href='#' className='float-right btn btn-danger' data-confirm='Are you sure?'>X</a>
+            </h5>
+          </div>
         </div>
-      </div>
+      </li>
     );
   }
 }

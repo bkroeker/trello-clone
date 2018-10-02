@@ -1,0 +1,11 @@
+ul#columns {
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    width: 250px;
+    padding-right: 5px;
+  }
+}

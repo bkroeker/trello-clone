@@ -59,6 +59,6 @@ class ColumnsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def column_params
-      params.fetch(:column).permit(:name)
+      params.fetch(:column).permit(:name, :position)
     end
 end
