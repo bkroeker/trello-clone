@@ -58,8 +58,8 @@ class BoardPage extends React.Component {
     });
   }
 
-  onChangePositionTask = (taskId, position) => {
-    axios.patch(`/tasks/${taskId}.json`, { task: { position } }).then((response) => {
+  onChangePositionTask = (taskId, columnId, position) => {
+    axios.patch(`/tasks/${taskId}.json`, { task: { column_id: columnId, position } }).then((response) => {
       this.fetchBoard();
     });
   }
