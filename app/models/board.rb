@@ -3,5 +3,5 @@ class Board < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  scope :ordered, -> { order('lower(name)') }
+  scope :ordered, -> { order(arel_table[:name].lower) }
 end

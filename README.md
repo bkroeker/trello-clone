@@ -12,8 +12,13 @@ This Trello Clone was built as a take-home exercise for a job application.  I ch
 You're free to use any technology you want on the backend, and any SPA framework on the frontend.
 
 ## To install:
-* gem install foreman
-* bundle install
-* rake db:create db:migrate
-* foreman start -f Procfile.dev
+* $ gem install foreman
+* $ bundle install
+* $ bundle exec rake db:create db:migrate
+* $ foreman start -f Procfile.dev
 * Go to http://localhost:3000
+
+## Testing:
+I added some simple rspec tests to demonstrate how I traditionally test things.  Ideally I'd have a more comprehensive suite including javascript testing, but I had to prioritize my time for this example exercise.
+
+* $ bundle exec rspec
