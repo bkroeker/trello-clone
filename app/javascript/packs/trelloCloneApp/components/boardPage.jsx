@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios-on-rails'
 
-import ColumnAdder from './ColumnAdder';
 import Columns from './Columns';
 
 class BoardPage extends React.Component {
@@ -53,6 +52,24 @@ class BoardPage extends React.Component {
     });
   }
 
+  onAddTask = (columnId, taskAttrs) => {
+    return axios.post(`/columns/${columnId}/tasks.json`, { task: taskAttrs }).then((response) => {
+      this.fetchBoard();
+    });
+  }
+
+  onChangePositionTask = (taskId, position) => {
+    axios.patch(`/tasks/${taskId}.json`, { task: { position } }).then((response) => {
+      this.fetchBoard();
+    });
+  }
+
+  onDeleteTask = (task) => {
+    axios.delete(`/tasks/${task.id}.json`).then((response) => {
+      this.fetchBoard();
+    });
+  }
+
   renderBody() {
     if (this.state.loading) {
       return (
@@ -64,12 +81,15 @@ class BoardPage extends React.Component {
           <h1>Board: {this.state.board.name}</h1>
           <div className='clearfix'>
             <a onClick={this.onDelete} href='#' className='btn btn-danger float-right' data-confirm='Are you sure?'>Delete Board</a>
-            <ColumnAdder onAdd={this.onAddColumn} />
           </div>
           <Columns
             columns={this.state.board.columns}
             onDelete={this.onDeleteColumn}
             onChangePosition={this.onChangePositionColumn}
+            onAddTask={this.onAddTask}
+            onAddColumn={this.onAddColumn}
+            onChangePositionTask={this.onChangePositionTask}
+            onDeleteTask={this.onDeleteTask}
           />
         </div>
       )

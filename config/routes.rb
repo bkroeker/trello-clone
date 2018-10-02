@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   shallow do
     resources :boards do
-      resources :columns
+      resources :columns do
+        resources :tasks
+      end
     end
   end
 

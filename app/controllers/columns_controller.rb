@@ -9,16 +9,16 @@ class ColumnsController < ApplicationController
   end
 
   def show
-    @board = Board.find params[:id]
+    @column = Column.find params[:id]
 
     respond_to do |format|
       format.html { render 'pages/root' }
-      format.json { render json: @board}
+      format.json { render json: @column }
     end
   end
 
   def new
-    @board = Board.new
+    @column = Column.new
     respond_to do |format|
       format.html { render 'pages/root' }
     end

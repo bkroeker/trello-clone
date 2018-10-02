@@ -1,10 +1,12 @@
 import React from 'react';
 
 import Column from './Column';
+import ColumnAdder from './ColumnAdder';
 
 export default class Columns extends React.Component {
   componentDidMount() {
     $(this.refs.columns).sortable({
+      items: "li:not(.ui-state-disabled)",
       placeholder: "ui-state-highlight",
       update: this.onPositionChange
     })
@@ -22,6 +24,9 @@ export default class Columns extends React.Component {
         key={column.id}
         column={column}
         onDelete={this.props.onDelete}
+        onAddTask={this.props.onAddTask}
+        onChangePositionTask={this.props.onChangePositionTask}
+        onDeleteTask={this.props.onDeleteTask}
       />
     );
   }
@@ -30,6 +35,9 @@ export default class Columns extends React.Component {
     return (
       <ul ref='columns' id='columns' className='clearfix'>
         {this.props.columns.map(this.renderColumn)}
+        <li className='ui-state-disabled'>
+          <ColumnAdder onAdd={this.props.onAddColumn} />
+        </li>
       </ul>
     );
   }

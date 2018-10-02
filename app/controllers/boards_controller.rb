@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       format.html { render 'pages/root' }
-      format.json { render json: @board.to_json(include: :columns) }
+      format.json { render json: @board.to_json(include: { columns: { include: :tasks }}) }
     end
   end
 
