@@ -13,6 +13,10 @@ class NewBoardPage extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.refs.name.focus();
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
 

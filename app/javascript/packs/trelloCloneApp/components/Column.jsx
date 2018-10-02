@@ -19,7 +19,9 @@ export default class Column extends React.Component {
           <div className='card-body'>
             <h5 className='card-title clearfix'>
               {this.props.column.position}. {this.props.column.name}
-              <a onClick={this.onDelete} href='#' className='float-right btn btn-danger' data-confirm='Are you sure?'>X</a>
+              <a onClick={this.onDelete} href='#' className='float-right btn btn-danger' data-confirm='Are you sure?'>
+                <i className='fas fa-trash-alt' />
+              </a>
             </h5>
 
             <Tasks

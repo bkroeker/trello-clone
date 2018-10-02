@@ -12,7 +12,9 @@ export default class Task extends React.Component {
         <div className='card'>
           <div className='card-body'>
             {this.props.task.position}. {this.props.task.name}
-            <a onClick={this.onDelete} href='#' className='float-right btn btn-sm btn-danger' data-confirm='Are you sure?'>X</a>
+            <a onClick={this.onDelete} href='#' className='float-right btn btn-sm btn-danger' data-confirm='Are you sure?'>
+              <i className='fas fa-trash-alt' />
+            </a>
           </div>
         </div>
       </li>

@@ -18,6 +18,10 @@ You're free to use any technology you want on the backend, and any SPA framework
 * $ foreman start -f Procfile.dev
 * Go to http://localhost:3000
 
+Note: Columns and tasks are prefixed with their database positions, to demonstrate that they are updating correctly when dragged around.
+
+Note: It is possible to drag tasks from one column to another as long as the destination column already has at least one task.
+
 ## Testing:
 I added some simple rspec tests to demonstrate how I traditionally test things.  Ideally I'd have a more comprehensive suite including javascript testing, but I had to prioritize my time for this example exercise.
 

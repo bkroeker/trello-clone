@@ -1,3 +1,13 @@
+ul.boards {
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;
+
+  > li {
+    margin-bottom: 5px;
+  }
+}
+
 ul#columns {
   padding: 0;
   margin: 10px 0;
@@ -21,4 +31,8 @@ ul.tasks {
     padding: 0;
     margin: 5px 0;
   }
+}
+
+.adder button {
+  margin-top: 5px;
 }

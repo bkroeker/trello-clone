@@ -26,7 +26,11 @@ class BoardsPage extends React.Component {
   renderBoard = (board) => {
     return (
       <li key={board.id}>
-        <Link to={`/boards/${board.id}`}>{board.name}</Link>
+        <div className='card'>
+          <div className='card-body'>
+            <Link to={`/boards/${board.id}`}>{board.name}</Link>
+          </div>
+        </div>
       </li>
     );
   }
@@ -38,7 +42,7 @@ class BoardsPage extends React.Component {
       );
     } else {
       return (
-        <ul>{this.state.boards.map(this.renderBoard)}</ul>
+        <ul className='boards'>{this.state.boards.map(this.renderBoard)}</ul>
       );
     }
   }
