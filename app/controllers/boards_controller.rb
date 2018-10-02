@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       format.html { render 'pages/root' }
-      format.json { render json: @board}
+      format.json { render json: @board.to_json(include: :columns) }
     end
   end
 
@@ -26,6 +26,17 @@ class BoardsController < ApplicationController
     @board = Board.new board_params
     respond_to do |format|
       if @board.save
+        format.json { render json: @board }
+      else
+        format.json { render json: @board.errors.full_messages, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @board = Board.find params[:id]
+    respond_to do |format|
+      if @board.update board_params
         format.json { render json: @board }
       else
         format.json { render json: @board.errors.full_messages, status: :unprocessable_entity }

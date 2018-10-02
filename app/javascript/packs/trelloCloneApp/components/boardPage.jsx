@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios-on-rails'
 
+import ColumnAdder from './ColumnAdder';
+import Columns from './Columns';
+
 class BoardPage extends React.Component {
   constructor(props) {
     super(props);
@@ -13,8 +16,11 @@ class BoardPage extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchBoard();
+  }
+
+  fetchBoard = () => {
     axios.get(`/boards/${this.state.boardId}.json`).then((response) => {
-      console.log(response.data);
       this.setState({
         board: response.data,
         loading: false
@@ -29,6 +35,18 @@ class BoardPage extends React.Component {
     });
   }
 
+  onAddColumn = (attrs) => {
+    return axios.post(`/boards/${this.state.boardId}/columns.json`, { column: attrs }).then((response) => {
+      this.fetchBoard();
+    });
+  }
+
+  onDeleteColumn = (column) => {
+    axios.delete(`/columns/${column.id}.json`).then((response) => {
+      this.fetchBoard();
+    });
+  }
+
   renderBody() {
     if (this.state.loading) {
       return (
@@ -38,7 +56,14 @@ class BoardPage extends React.Component {
       return(
         <div>
           <h1>Board: {this.state.board.name}</h1>
-          <a onClick={this.onDelete} href='#' className='btn btn-danger' data-confirm='Are you sure?'>Delete Board</a>
+          <div className='clearfix'>
+            <a onClick={this.onDelete} href='#' className='btn btn-danger float-right' data-confirm='Are you sure?'>Delete Board</a>
+            <ColumnAdder onAdd={this.onAddColumn} />
+          </div>
+          <Columns
+            columns={this.state.board.columns}
+            onDelete={this.onDeleteColumn}
+          />
         </div>
       )
     }
